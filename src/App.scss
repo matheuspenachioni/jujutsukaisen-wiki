@@ -1,0 +1,415 @@
+@font-face {
+    font-family: 'JujutsuKaisen';
+    src: url('./assets/fonts/JujutsuKaisen.ttf') format('truetype');
+}
+
+//Character items
+.character-view-container {
+    margin-left: 20%;
+}
+
+.character-image-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    z-index: -1;
+}
+
+.character-image-container img {
+    width: 100%;
+    height: 100vh;
+    object-fit: cover;
+    background: linear-gradient(0deg, #000 20%, rgba(0, 0, 0, 0) 65%) no-repeat;
+}
+
+.character-info {
+    background-color: rgba(0, 0, 0, 0.7);
+    width: 30%;
+    margin-top: 2rem;
+    padding: 1rem 1rem .5rem 1rem;
+    border-radius: 10px;
+}
+
+.character-name {
+    font-size: 3rem;
+    margin-bottom: 0;
+    margin-top: 0;
+    color: #e4e4e4;
+}
+
+.character-description {
+    text-align: justify;
+    text-justify: inter-word;
+}
+
+.base-txt {
+    color: #e4e4e4;
+    font-size: 1.1rem;
+    font-family: "Lucida Console", Monaco, monospace;
+}
+
+.title {
+    font-family: 'JujutsuKaisen', sans-serif;
+    text-shadow: 0px .5px 0px #d6cd80;
+}
+
+//Spoiler Tag
+.spoiler {
+    background-color: #d6cd80;
+    border-radius: .5rem;
+    color: transparent;
+    font-size: 1.2rem;
+    display: inline;
+}
+
+.spoiler:hover {
+    background-color: transparent;
+    color: #e4e4e4;
+}
+
+//Sidebar
+.sidebar {
+    width: 15%;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.7);
+    position: fixed;
+    left: 0;
+    top: 0;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+//Sidebar Scroll
+.sidebar::-webkit-scrollbar {
+    width: 6px;
+}
+
+.sidebar::-webkit-scrollbar-track {
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+}
+
+.sidebar::-webkit-scrollbar-thumb {
+    background-color: rgba(255, 255, 255, 0.5);
+    border-radius: 10px;
+}
+
+.sidebar::-webkit-scrollbar-thumb:hover {
+    background-color: rgba(255, 255, 255, 0.8);
+}
+
+//Sidebar items
+.sidebar-logo {
+    width: 14rem;
+    margin-top: 1rem;
+}
+
+.sidebar-title {
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    text-align: center;
+    color: #fff;
+}
+
+.category-button {
+    font-family: 'JujutsuKaisen', sans-serif;
+    color: #d6cd80;
+    border-radius: 25px;
+    padding: 10px 25px;
+    font-size: 16px;
+    position: relative;
+    transition: all 0.3s ease-in-out;
+    width: 200px;
+
+    &:hover {
+        color: #fff;
+    }
+}
+
+.category-button,
+.character-button {
+    background-color: transparent;
+    border: 0;
+    cursor: pointer;
+    display: block;
+}
+
+.character-button {
+    margin-bottom: .8rem;
+}
+
+.character-image {
+    width: 6rem;
+    height: 6rem;
+    border-radius: 50%;
+    object-fit: cover;
+    overflow: cover;
+    border: solid;
+    border-color: #d6cd80;
+    border-width: .2rem;
+    transition: transform .3s;
+
+    &:hover {
+        transform: scale(1.2);
+    }
+}
+
+//Music Player items
+.music-player {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px 5px 20px 5px;
+    border-radius: 10px;
+
+    button {
+        background-color: transparent;
+        border: none;
+        cursor: pointer;
+        font-size: 20px;
+        margin-right: 20px;
+        outline: none;
+
+    }
+
+    .fa-play,
+    .fa-pause,
+    .fa-volume-up {
+        color: #d6cd80;
+
+        &:hover {
+            color: #fff;
+        }
+    }
+
+    input[type="range"] {
+        appearance: none;
+        width: 150px;
+        height: 4px;
+        background: #e0e0e0;
+        border-radius: 20px;
+        outline: none;
+        transition: opacity 0.2s;
+
+        &::-webkit-slider-thumb {
+            appearance: none;
+            width: 14px;
+            height: 14px;
+            background: #d6cd80;
+            cursor: pointer;
+            border-radius: 50%;
+        }
+
+        &::-moz-range-thumb {
+            width: 14px;
+            height: 14px;
+            background: #333;
+            cursor: pointer;
+            border-radius: 50%;
+        }
+
+        &:hover {
+            opacity: 0.8;
+        }
+    }
+
+    audio {
+        display: none;
+    }
+}
+
+//Mobile
+@media (max-width: 1600px) {
+    .character-view-container {
+        margin-left: 5%;
+    }
+
+    .character-info {
+        width: 45%;
+    }
+
+    .sidebar {
+        width: 100%;
+        height: auto;
+        position: relative;
+        border-radius: 10px;
+        padding-bottom: 2rem;
+        overflow: hidden;
+        transition: max-height 10s ease-in-out;
+    }
+
+    .sidebar, .category-button-container, .character-button-container {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+    }
+
+    .sidebar .character-button {
+        width: 14%;
+        margin-bottom: 5rem;
+    }
+
+    .sidebar.opened {
+        transform: translateY(0);
+    }
+
+    .sidebar-logo {
+        margin-top: 0.5rem;
+    }
+
+    .music-player {
+        padding-bottom: 5px;
+    }
+
+    .menu-toggle {
+        position: absolute;
+        top: 1rem;
+        right: 1rem;
+        font-size: 24px;
+        cursor: pointer;
+        color: #d6cd80;
+        transition: transform 0.3s ease-in-out;
+    }
+
+    .sidebar.opened .menu-toggle {
+        transform: rotate(90deg);
+    }
+
+    .menu-opened {
+        display: block;
+    }
+
+    .sidebar-title,
+    .category-button,
+    .character-button {
+        display: none;
+        max-height: 0;
+        opacity: 0;
+        transition: max-height 0.3s ease-in-out, opacity 0.2s ease-in-out;
+    }
+
+    .sidebar.opened .sidebar-title {
+        display: block;
+        opacity: 1;
+        margin-bottom: 3rem;
+        margin-top: 2rem;
+    }
+
+    .sidebar.opened .category-button,
+    .sidebar.opened .character-button {
+        display: block;
+        max-height: 50px;
+        margin-top: 10px;
+        opacity: 1;
+    }
+}
+@media (max-width: 768px) {
+    body {
+        background-color: #3a3a3a;
+    }
+
+    .sidebar {
+        width: 100%;
+        height: auto;
+        position: relative;
+        border-radius: 10px;
+        padding-bottom: 2rem;
+        overflow: hidden;
+        transition: max-height 10s ease-in-out;
+    }
+
+    .sidebar, .category-button-container, .character-button-container {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+    }
+
+    .sidebar .character-button {
+        width: 50%;
+        margin-bottom: 5rem;
+    }
+
+    .sidebar.opened {
+        transform: translateY(0);
+    }
+
+    .sidebar-logo {
+        margin-top: 0.5rem;
+    }
+
+    .music-player {
+        padding-bottom: 5px;
+    }
+
+    .menu-toggle {
+        position: absolute;
+        top: 1rem;
+        right: 1rem;
+        font-size: 24px;
+        cursor: pointer;
+        color: #d6cd80;
+        transition: transform 0.3s ease-in-out;
+    }
+
+    .sidebar.opened .menu-toggle {
+        transform: rotate(90deg);
+    }
+
+    .menu-opened {
+        display: block;
+    }
+
+    .sidebar-title,
+    .category-button,
+    .character-button {
+        display: none;
+        max-height: 0;
+        opacity: 0;
+        transition: max-height 0.3s ease-in-out, opacity 0.2s ease-in-out;
+    }
+
+    .sidebar.opened .sidebar-title {
+        display: block;
+        opacity: 1;
+        margin-bottom: 3rem;
+        margin-top: 2rem;
+    }
+
+    .sidebar.opened .category-button,
+    .sidebar.opened .character-button {
+        display: block;
+        max-height: 50px;
+        margin-top: 10px;
+        opacity: 1;
+    }
+
+    .character-view-container {
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .character-image-container {
+        position: relative;
+        width: 100%;
+        height: auto;
+        margin-top: 1rem;
+    }
+
+    .character-image-container img {
+        width: 100%;
+        height: auto;
+        object-fit: contain;
+        border-radius: .5rem;
+    }
+
+    .character-info {
+        width: 92%;
+        margin-left: auto;
+        margin-right: auto;
+        margin-top: 1rem;
+    }
+}
